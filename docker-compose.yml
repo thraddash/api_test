@@ -4,30 +4,36 @@ services:
   frontend:
     image: frontend
     ports:
-      - "80:80"
-    environment:
-      - HOST=${HOST}  
+      - "80:3000"
     build:
       dockerfile: Dockerfile
       context: ./frontend  
+    depends_on:
+      - "backend" 
+
   backend:
     image: backend
     ports:
       - "3001:3001"
-    environment:
-      - HOST=${HOST}  
     build:
       dockerfile: Dockerfile
       context: ./backend
     depends_on:
-        - "db"
-    command: ["wait-for-it", "db:27017", "--", "node", "server.js"]
+      db:
+        condition: service_healthy
+    command: ["node", "server.js"]
+
   db:
     image: mongo:4.2.0
     volumes:
       - "mongodata:/data/db"
     ports:
       - 27017:27017
+    healthcheck:
+      test:  echo 'db.runCommand("ping").ok' | mongo localhost:27017/reactaxios --quiet 
+      interval: 10s
+      timeout: 10s
+      retries: 5 
     command: mongod --noauth
     
 volumes:

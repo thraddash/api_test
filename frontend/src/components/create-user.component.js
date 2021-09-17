@@ -2,8 +2,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-const port = process.env.PORT
-const host = process.env.HOST
+const api_port = process.env.API_PORT
+const api_host = process.env.API_HOST
 
 export default class CreateUser extends Component {
 
@@ -36,7 +36,7 @@ export default class CreateUser extends Component {
             email: this.state.email
         };
 
-        axios.post(`http://${host}:${port}/users/create`, userObject)
+        axios.post(`http://${api_host}:${api_port}/users/create`, userObject)
             .then((res) => {
                 console.log(res.data)
             }).catch((error) => {
