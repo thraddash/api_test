@@ -6,7 +6,7 @@ echo "PORT = 3001" >> .env
 #echo "HOST = $(hostname -I | awk '{print $1}')" > backend/.env
 #echo "PORT = 3001" >> backend/.env
 
-docker-compose --env-file .env build
+#docker-compose build
 
 #docker build . -t food2:latest
 #docker stop food2

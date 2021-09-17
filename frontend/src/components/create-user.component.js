@@ -36,7 +36,7 @@ export default class CreateUser extends Component {
             email: this.state.email
         };
 
-        axios.post('http://${host}:${port}/users/create', userObject)
+        axios.post(http://${host}:${port}/users/create, userObject)
             .then((res) => {
                 console.log(res.data)
             }).catch((error) => {
