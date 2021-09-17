@@ -13,7 +13,7 @@ export default class Users extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://${host}:${port}/users')
+        axios.get(`http://${host}:${port}/users`)
             .then(res => {
                 this.setState({ usersCollection: res.data });
             })
