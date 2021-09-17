@@ -8,10 +8,6 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./frontend
-    links:
-      - backend
-    networks:
-      - webappnetwork
   backend:
     image: backend
     ports:
@@ -20,10 +16,10 @@ services:
       dockerfile: Dockerfile
       context: ./backend
       depends_on:
-        - "mongodb"
-      #command: ["wait-for-it", "db:27017", "--", "node", "server.js"]
-  mongodb:
-    image: mongo
+        - "db"
+      command: ["wait-for-it", "db:27017", "--", "node", "server.js"]
+  db:
+    image: mongo:4.2.0
     volumes:
       - "mongodata:/data/db"
     ports:
@@ -31,5 +27,4 @@ services:
     command: mongod --noauth --smallfiles
   volumes:
     mongodata:    
-
   
