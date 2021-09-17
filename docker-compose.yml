@@ -22,8 +22,6 @@ services:
       depends_on:
         - "mongodb"
       #command: ["wait-for-it", "db:27017", "--", "node", "server.js"]
-      networks:
-        - webappnetwork
   mongodb:
     image: mongo
     volumes:
@@ -31,12 +29,7 @@ services:
     ports:
       - 27017:27017
     command: mongod --noauth --smallfiles
-    networks:
-      - webappnetwork  
   volumes:
     mongodata:    
-  networks:
-    webappnetwork:
-      driver: bridge  
 
   
