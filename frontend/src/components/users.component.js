@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import DataTable from './data-table';
 
+const port = process.env.API_PORT
+const host = process.env.API_HOST
+
 export default class Users extends Component {
 
     constructor(props) {
@@ -10,7 +13,7 @@ export default class Users extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:4000/users')
+        axios.get('http://${host}:${port}/users')
             .then(res => {
                 this.setState({ usersCollection: res.data });
             })

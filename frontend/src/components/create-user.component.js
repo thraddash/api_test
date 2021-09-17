@@ -1,7 +1,9 @@
 // ** create-user.component.js ** //
-
 import React, { Component } from 'react';
 import axios from 'axios';
+
+const port = process.env.API_PORT
+const host = process.env.API_HOST
 
 export default class CreateUser extends Component {
 
@@ -34,7 +36,7 @@ export default class CreateUser extends Component {
             email: this.state.email
         };
 
-        axios.post('http://localhost:4000/users/create', userObject)
+        axios.post('http://${host}:${port}/users/create', userObject)
             .then((res) => {
                 console.log(res.data)
             }).catch((error) => {

@@ -11,7 +11,7 @@ services:
   backend:
     image: backend
     ports:
-      - "3001:4000"
+      - "3001:3001"
     build:
       dockerfile: Dockerfile
       context: ./backend
