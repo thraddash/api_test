@@ -25,6 +25,7 @@ services:
     ports:
       - 27017:27017
     command: mongod --noauth --smallfiles
-  volumes:
-    mongodata:    
+    
+volumes:
+  mongodata:    
   
