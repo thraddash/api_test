@@ -17,7 +17,7 @@ services:
       context: ./backend
       depends_on:
         - "db"
-      command: ["wait-for-it", "db:27017", "--", "node", "server.js"]
+    command: ["wait-for-it", "db:27017", "--", "node", "server.js"]
   db:
     image: mongo:4.2.0
     volumes:
