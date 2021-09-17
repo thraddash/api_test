@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-echo "HOST = $(hostname -I | awk '{print $1}')" > /config/.env
-echo "PORT = 3001" >> /config/.env
+echo "HOST = $(hostname -I | awk '{print $1}')" > .env
+echo "PORT = 3001" >> .env
 
 #echo "HOST = $(hostname -I | awk '{print $1}')" > backend/.env
 #echo "PORT = 3001" >> backend/.env
 
-docker-compose config build
+docker-compose --env-file .env build
 
 #docker build . -t food2:latest
 #docker stop food2
