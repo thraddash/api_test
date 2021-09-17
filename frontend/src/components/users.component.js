@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import DataTable from './data-table';
+require('dotenv').config({ path: '../../../.env' });
 
-const api_port = process.env.API_PORT
-const api_host = process.env.API_HOST
+const API_HOST = process.env.REACT_APP_API_HOST
+const API_PORT = process.env.REACT_APP_API_PORT
 
 export default class Users extends Component {
-
+    
     constructor(props) {
         super(props);
         this.state = { usersCollection: [] };
     }
 
     componentDidMount() {
-        axios.get(`http://${api_host}:${api_port}/users`)
+        axios.get(`http://${API_HOST}:${API_PORT}/users`)
             .then(res => {
                 this.setState({ usersCollection: res.data });
             })

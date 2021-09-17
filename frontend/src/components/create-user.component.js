@@ -1,9 +1,11 @@
 // ** create-user.component.js ** //
 import React, { Component } from 'react';
 import axios from 'axios';
+require('dotenv').config({ path: '../../.env' });
 
-const api_port = process.env.API_PORT
-const api_host = process.env.API_HOST
+const API_HOST = process.env.REACT_APP_API_HOST
+const API_PORT = process.env.REACT_APP_API_PORT
+
 
 export default class CreateUser extends Component {
 
@@ -35,8 +37,8 @@ export default class CreateUser extends Component {
             name: this.state.name,
             email: this.state.email
         };
-
-        axios.post(`http://${api_host}:${api_port}/users/create`, userObject)
+        
+        axios.post(`http://${API_HOST}:${API_PORT}/users/create`, userObject)
             .then((res) => {
                 console.log(res.data)
             }).catch((error) => {

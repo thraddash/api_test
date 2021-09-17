@@ -3,6 +3,7 @@ let mongoose = require('mongoose');
 let cors = require('cors');
 let bodyParser = require('body-parser');
 let database = require('./database/db');
+require('dotenv').config({ path: '../../.env' });
 
 const userRoute = require('./routes/user.routes')
 
@@ -27,7 +28,7 @@ app.use(cors());
 app.use('/users', userRoute)
 
 
-const port = process.env.PORT || 3001;
+const port = process.env.REACT_APP_API_PORT || 3001;
 const server = app.listen(port, () => {
     console.log('Connected to port ' + port)
 })
