@@ -5,13 +5,17 @@ services:
     image: frontend
     ports:
       - "80:80"
+    environment:
+      - HOST=${HOST}  
     build:
       dockerfile: Dockerfile
-      context: ./frontend
+      context: ./frontend  
   backend:
     image: backend
     ports:
       - "3001:3001"
+    environment:
+      - HOST=${HOST}  
     build:
       dockerfile: Dockerfile
       context: ./backend

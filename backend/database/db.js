@@ -1,7 +1,7 @@
 require('dotenv').config({path: '../.env'});
 
-const dbhost = process.env.DB_HOST
+const host = process.env.HOST
 
 module.exports = {
-    db: 'mongodb://${dbhost}:27017/reactaxios'
+    db: 'mongodb://${host}:27017/reactaxios'
 };

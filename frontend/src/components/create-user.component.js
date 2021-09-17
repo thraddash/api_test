@@ -2,8 +2,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-const port = process.env.API_PORT
-const host = process.env.API_HOST
+const port = process.env.PORT
+const host = process.env.HOST
 
 export default class CreateUser extends Component {
 
