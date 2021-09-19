@@ -19,18 +19,18 @@ services:
       dockerfile: Dockerfile
       context: ./backend
     depends_on:
-      db:
+      mongo-db:
         condition: service_healthy
     command: ["node", "server.js"]
 
-  db:
+  mongo-db:
     image: mongo:4.2.0
     volumes:
       - "mongodata:/data/db"
     ports:
       - 27017:27017
     healthcheck:
-      test:  echo 'db.runCommand("ping").ok' | mongo localhost:27017/reactaxios --quiet 
+      test:  echo 'db.runCommand("ping").ok' | mongo mongo-db:27017/reactaxios --quiet 
       interval: 10s
       timeout: 10s
       retries: 5 
