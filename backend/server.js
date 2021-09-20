@@ -3,7 +3,7 @@ let mongoose = require('mongoose');
 let cors = require('cors');
 let bodyParser = require('body-parser');
 let database = require('./database/db');
-require('dotenv').config({ path: '../../.env' });
+require('dotenv').config({ path: './.env' });
 
 const userRoute = require('./routes/user.routes')
 
