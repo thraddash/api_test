@@ -36,9 +36,11 @@ export default class Users extends Component {
                     <table className="table table-striped table-dark">
                         <thead className="thead-dark">
                             <tr>
-                                <td>ID</td>
+                                <td>Id</td>
                                 <td>Name</td>
                                 <td>Email</td>
+                                <td>Edit</td>
+                                <td>Delete</td>
                             </tr>
                         </thead>
                         <tbody>
